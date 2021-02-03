@@ -15,7 +15,8 @@
     "build:types": "rimraf dist/types && tsc -p config/tsconfig.types.json",
     "clean": "rimraf dist",
     "package": "npm run build && npm pack",
-    "test": "deno test test/index.deno.test.ts --allow-net"
+    "test:deno": "deno test test/index.test.deno.ts --allow-net",
+    "test:node": "ava --config ava.config.cjs"
   },
   "publishConfig": {
     "access": "public"

@@ -1,3 +1,6 @@
+const escapeRegExp = (s: string): string =>
+  s.replace(/[.*+\-?^${}()|[\]\\]/g, '\\$&')
+
 /**
  * Fetch and read text file line by line
  *
@@ -10,18 +13,31 @@
  */
 export default async function* (
   filepath: string,
-  includeLastEmptyLine = true
+  {
+    includeLastEmptyLine = true,
+    encoding = 'utf-8',
+    delimiter = /\r\n|\n|\r/g,
+  }: {
+    includeLastEmptyLine?: boolean
+    encoding?: string
+    delimiter?: string | RegExp
+  } = {}
 ): AsyncIterableIterator<string> {
   const res = await fetch(filepath)
   if (res.body === null) {
     throw new Error('Cannot read file')
   }
+
   const reader = res.body.getReader()
   let { value: chunk, done: readerDone } = await reader.read()
-  const textDec = new TextDecoder('utf-8')
+  const textDec = new TextDecoder(encoding)
   let chunkStr = chunk ? textDec.decode(chunk) : ''
 
-  const re = /\r\n|\n|\r/gm
+  const re: RegExp =
+    typeof delimiter === 'string'
+      ? new RegExp(escapeRegExp(delimiter), 'g')
+      : delimiter
+
   let startIndex = 0
 
   while (1) {
@@ -39,10 +55,8 @@ export default async function* (
     yield chunkStr.substring(startIndex, result.index)
     startIndex = re.lastIndex
   }
+
   if (includeLastEmptyLine || startIndex < chunkStr.length) {
     yield chunkStr.substring(startIndex)
   }
 }
-
-// Originally from
-// https://developer.mozilla.org/en-US/docs/Web/API/ReadableStreamDefaultReader/read#example_2_-_handling_text_line_by_line

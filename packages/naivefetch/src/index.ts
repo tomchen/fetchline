@@ -15,7 +15,7 @@ export default async function* (
   try {
     const response = await fetch(filepath)
     const text = await response.text()
-    const re = /\r\n|\n|\r/gm
+    const re = /\r\n|\n|\r/g
     const rows = text.split(re)
     if (includeLastEmptyLine === false && rows[rows.length - 1] === '') {
       rows.pop()
