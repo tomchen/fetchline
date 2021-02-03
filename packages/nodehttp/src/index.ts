@@ -32,6 +32,7 @@ export default async function* (
         h.get(filepath, async (res) => {
           const rl = readline.createInterface({
             input: res,
+            crlfDelay: Infinity,
           })
           resolve(rl[Symbol.asyncIterator]())
         }).on('error', (error) => {

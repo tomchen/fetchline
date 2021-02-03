@@ -4,20 +4,22 @@
  * With native `fetch()` method. To be used for modern browsers or Deno to fetch remote file over HTTP(S)
  *
  * @param filepath - URL of the text file
+ * @param includeLastEmptyLine - Should it count the last empty line?
  *
  * @returns An asynchronous iterable iterator containing each line in string from the text file
  */
 export default async function* (
-  filepath: string
+  filepath: string,
+  includeLastEmptyLine = true
 ): AsyncIterableIterator<string> {
-  const utf8Decoder = new TextDecoder('utf-8')
   const res = await fetch(filepath)
   if (res.body === null) {
     throw new Error('Cannot read file')
   }
   const reader = res.body.getReader()
   let { value: chunk, done: readerDone } = await reader.read()
-  let chunkStr = chunk ? utf8Decoder.decode(chunk) : ''
+  const textDec = new TextDecoder('utf-8')
+  let chunkStr = chunk ? textDec.decode(chunk) : ''
 
   const re = /\r\n|\n|\r/gm
   let startIndex = 0
@@ -30,15 +32,14 @@ export default async function* (
       }
       const remainder = chunkStr.substring(startIndex)
       ;({ value: chunk, done: readerDone } = await reader.read())
-      chunkStr = remainder + (chunkStr ? utf8Decoder.decode(chunk) : '')
+      chunkStr = remainder + (chunkStr ? textDec.decode(chunk) : '')
       startIndex = re.lastIndex = 0
       continue
     }
     yield chunkStr.substring(startIndex, result.index)
     startIndex = re.lastIndex
   }
-  if (startIndex < chunkStr.length) {
-    // last line
+  if (includeLastEmptyLine || startIndex < chunkStr.length) {
     yield chunkStr.substring(startIndex)
   }
 }
