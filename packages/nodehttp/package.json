@@ -1,0 +1,58 @@
+{
+  "name": "@readline/nodehttp",
+  "version": "1.0.0-rc.1",
+  "description": "Read text file (remote over HTTP(S) or local) line by line as async iterator, with Node, browsers and Deno",
+  "main": "dist/cjs/index.js",
+  "module": "dist/esm/index.js",
+  "types": "dist/types/index.d.js",
+  "scripts": {
+    "build": "npm run build:cjs && npm run build:esm && npm run build:types",
+    "build:cjs": "rimraf dist/cjs && tsc -p config/tsconfig.cjs.json",
+    "build:esm": "rimraf dist/esm && tsc -p config/tsconfig.esm.json",
+    "build:types": "rimraf dist/types && tsc -p config/tsconfig.types.json",
+    "clean": "rimraf dist",
+    "package": "npm run build && npm pack",
+    "test": "ava --config ava.config.cjs"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "files": [
+    "dist"
+  ],
+  "keywords": [
+    "readline",
+    "line",
+    "iterator",
+    "async-iterator",
+    "node",
+    "nodejs",
+    "deno",
+    "browser",
+    "isomorphic",
+    "file",
+    "fetch",
+    "promise",
+    "iterable"
+  ],
+  "author": "Tom Chen <tomchen.org@gmail.com>",
+  "license": "MIT",
+  "homepage": "https://github.com/tomchen/readlineiter",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:tomchen/readlineiter.git"
+  },
+  "bugs": {
+    "url": "https://github.com/tomchen/readlineiter/issues"
+  },
+  "devDependencies": {
+    "ava": "^3.0.2",
+    "lodash": "^4.17.20",
+    "rimraf": "^3.0.2",
+    "ts-loader": "^8.0.14",
+    "ts-node": "^9.1.1",
+    "typescript": "^4.1.3",
+    "webpack": "^5.20.0",
+    "webpack-cli": "^4.5.0"
+  }
+}

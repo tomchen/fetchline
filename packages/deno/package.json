@@ -1,0 +1,5 @@
+{
+  "scripts": {
+    "test": "deno test --allow-read"
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "target": "ES2015",
+    "lib": ["ES2018", "DOM"],
+    "isolatedModules": true,
+    "strict": true,
+    // "declarationMap": true,
+    // "sourceMap": true,
+    "composite": true,
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true
+  }
+}
