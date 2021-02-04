@@ -31,7 +31,7 @@ jobs:
       - name: Install modules
         run: yarn
       - name: Run tests
-        run: yarn test
+        run: yarn test:node
 
   deno-test:
     runs-on: ubuntu-16.04
@@ -52,7 +52,5 @@ jobs:
           deno-version: ${{ matrix.deno }}
       - name: Install modules
         run: yarn
-      - name: Run Node tests
-        run: yarn test:node
       - name: Run Deno tests
         run: yarn test:deno
