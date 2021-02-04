@@ -26,7 +26,7 @@ export default async function* (
   {
     includeLastEmptyLine = true,
     encoding = 'utf-8',
-    delimiter = /\r\n|\n|\r/g,
+    delimiter = /\r?\n/g,
   }: {
     includeLastEmptyLine?: boolean
     encoding?: string
@@ -39,23 +39,30 @@ export default async function* (
   const decoder = new TextDecoder(encoding)
   let chunkStr = chunk ? decoder.decode(chunk) : ''
 
-  const re: RegExp =
-    typeof delimiter === 'string'
-      ? new RegExp(escapeRegExp(delimiter), 'g')
-      : delimiter
+  let re: RegExp
+  if (typeof delimiter === 'string') {
+    if (delimiter === '') {
+      throw new Error('delimiter cannot be empty string!')
+    }
+    re = new RegExp(escapeRegExp(delimiter), 'g')
+  } else if (/g/.test(delimiter.flags) === false) {
+    re = new RegExp(delimiter.source, delimiter.flags + 'g')
+  } else {
+    re = delimiter
+  }
 
   let startIndex = 0
 
   while (1) {
     const result = re.exec(chunkStr)
-    if (!result) {
-      if (readerDone) {
+    if (result === null) {
+      if (readerDone === true) {
         break
       }
       const remainder = chunkStr.substring(startIndex)
       ;({ value: chunk, done: readerDone } = await reader.read())
       chunkStr = remainder + (chunkStr ? decoder.decode(chunk) : '')
-      startIndex = re.lastIndex = 0
+      startIndex = 0
       continue
     }
     yield chunkStr.substring(startIndex, result.index)

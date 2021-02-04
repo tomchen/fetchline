@@ -62,7 +62,7 @@
     {
       includeLastEmptyLine = true,
       encoding = 'utf-8',
-      delimiter = /\r\n|\n|\r/g,
+      delimiter = /\r?\n/g,
     } = {}
   ) {
     const reader = await (typeof fetch === 'function'
@@ -74,23 +74,30 @@
     const decoder = new TextDecoder(encoding)
     let chunkStr = chunk ? decoder.decode(chunk) : ''
 
-    const re =
-      typeof delimiter === 'string'
-        ? new RegExp(escapeRegExp(delimiter), 'g')
-        : delimiter
+    let re
+    if (typeof delimiter === 'string') {
+      if (delimiter === '') {
+        throw new Error('delimiter cannot be empty string!')
+      }
+      re = new RegExp(escapeRegExp(delimiter), 'g')
+    } else if (/g/.test(delimiter.flags) === false) {
+      re = new RegExp(delimiter.source, delimiter.flags + 'g')
+    } else {
+      re = delimiter
+    }
 
     let startIndex = 0
 
     while (1) {
       const result = re.exec(chunkStr)
-      if (!result) {
-        if (readerDone) {
+      if (result === null) {
+        if (readerDone === true) {
           break
         }
         const remainder = chunkStr.substring(startIndex)
         ;({ value: chunk, done: readerDone } = await reader[iterFuncName]())
         chunkStr = remainder + (chunkStr ? decoder.decode(chunk) : '')
-        startIndex = re.lastIndex = 0
+        startIndex = 0
         continue
       }
       yield chunkStr.substring(startIndex, result.index)

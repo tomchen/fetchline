@@ -16,7 +16,7 @@ export default async function* (
   {
     includeLastEmptyLine = true,
     encoding = 'utf-8',
-    delimiter = /\r\n|\n|\r/g,
+    delimiter = /\r?\n/g,
   }: {
     includeLastEmptyLine?: boolean
     encoding?: string
@@ -28,10 +28,17 @@ export default async function* (
     const buffer = await response.arrayBuffer()
     const decoder = new TextDecoder(encoding)
     const text = decoder.decode(buffer)
-    const re: RegExp =
-      typeof delimiter === 'string'
-        ? new RegExp(escapeRegExp(delimiter), 'g')
-        : delimiter
+    let re: RegExp
+    if (typeof delimiter === 'string') {
+      if (delimiter === '') {
+        throw new Error('delimiter cannot be empty string!')
+      }
+      re = new RegExp(escapeRegExp(delimiter), 'g')
+    } else if (/g/.test(delimiter.flags) === false) {
+      re = new RegExp(delimiter.source, delimiter.flags + 'g')
+    } else {
+      re = delimiter
+    }
     const rows = text.split(re)
     if (includeLastEmptyLine === false && rows[rows.length - 1] === '') {
       rows.pop()
