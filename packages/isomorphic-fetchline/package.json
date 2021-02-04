@@ -1,21 +1,15 @@
 {
   "name": "isomorphic-fetchline",
-  "version": "1.0.0-rc.1",
+  "version": "1.0.0-alpha",
   "description": "Read text file (remote over HTTP(S) or local) line by line as async iterator, with Node, browsers and Deno",
-  "main": "dist/cjs/index.js",
-  "module": "dist/esm/index.js",
+  "main": "dist/umd/index.js",
   "browsers": "dist/umd/index.js",
   "umd:main": "dist/umd/index.js",
   "types": "dist/types/index.d.js",
   "scripts": {
-    "build": "npm run build:cjs && npm run build:esm && npm run build:umd && npm run build:types",
-    "build:cjs": "rimraf dist/cjs && tsc -p config/tsconfig.cjs.json",
-    "build:esm": "rimraf dist/esm && tsc -p config/tsconfig.esm.json",
-    "build:umd": "rimraf dist/umd && webpack --config config/webpack.config.js && rimraf src/index.d.ts src/index.js",
-    "build:types": "rimraf dist/types && tsc -p config/tsconfig.types.json",
+    "build": "rimraf dist/umd && mkdirp dist/umd && terser --compress --mangle --output dist/umd/index.js -- src/index.js",
     "clean": "rimraf dist",
     "package": "npm run build && npm pack",
-    "test:deno": "deno test test/index.test.deno.ts --allow-net",
     "test:node": "ava --config ava.config.cjs"
   },
   "publishConfig": {
@@ -41,19 +35,21 @@
   ],
   "author": "Tom Chen <tomchen.org@gmail.com>",
   "license": "MIT",
-  "homepage": "https://github.com/tomchen/readlineiter",
+  "homepage": "https://github.com/tomchen/fetchline",
   "repository": {
     "type": "git",
-    "url": "git@github.com:tomchen/readlineiter.git"
+    "url": "git@github.com:tomchen/fetchline.git"
   },
   "bugs": {
-    "url": "https://github.com/tomchen/readlineiter/issues"
+    "url": "https://github.com/tomchen/fetchline/issues"
   },
   "devDependencies": {
     "@types/node-fetch": "^2.5.8",
     "ava": "^3.0.2",
     "lodash": "^4.17.20",
+    "mkdirp": "^1.0.4",
     "rimraf": "^3.0.2",
+    "terser": "^5.5.1",
     "ts-loader": "^8.0.14",
     "ts-node": "^9.1.1",
     "typescript": "^4.1.3",

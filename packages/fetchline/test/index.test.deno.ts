@@ -1,5 +1,5 @@
 import { assertEquals } from 'https://deno.land/std@0.85.0/testing/asserts.ts'
-import readlineiter from '../src/index.ts'
+import fetchline from '../src/index.ts'
 
 // "ELEL" means "Excluding Last Empty Line"
 
@@ -61,7 +61,7 @@ for (const {
   linecountELEL,
 } of filesToTest) {
   Deno.test(`${filename} firstline`, async () => {
-    const iter: AsyncIterableIterator<string> = readlineiter(path)
+    const iter: AsyncIterableIterator<string> = fetchline(path)
 
     assertEquals((await iter.next()).value, firstline)
 
@@ -73,7 +73,7 @@ for (const {
   Deno.test(
     `${filename} linecount and lastline (includeLastEmptyLine=true (default))`,
     async () => {
-      const iter: AsyncIterableIterator<string> = readlineiter(path)
+      const iter: AsyncIterableIterator<string> = fetchline(path)
 
       const lines = await iterator2array(iter)
 
@@ -92,7 +92,7 @@ for (const {
   Deno.test(
     `${filename} linecount and lastline (includeLastEmptyLine=false)`,
     async () => {
-      const iter: AsyncIterableIterator<string> = readlineiter(path, {
+      const iter: AsyncIterableIterator<string> = fetchline(path, {
         includeLastEmptyLine: false,
       })
 

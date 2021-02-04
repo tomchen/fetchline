@@ -4,8 +4,11 @@
   "scripts": {
     "bootstrap": "lerna bootstrap",
     "build": "lerna run build",
-    "test": "lerna run test",
-    "clean": "rimraf packages/**/dist"
+    "test:node": "lerna run test:node",
+    "test:deno": "lerna run test:deno",
+    "cleandist": "rimraf packages/**/dist",
+    "cleanbuildcache": "rimraf packages/**/buildcache",
+    "rebuild": "yarn run cleanbuildcache && yarn run build"
   },
   "devDependencies": {
     "lerna": "^3.22.1",

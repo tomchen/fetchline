@@ -1,3 +1,6 @@
+const escapeRegExp = (s: string): string =>
+  s.replace(/[.*+\-?^${}()|[\]\\]/g, '\\$&')
+
 /**
  * Fetch and read text file line by line
  *
@@ -10,12 +13,25 @@
  */
 export default async function* (
   filepath: string,
-  includeLastEmptyLine = true
+  {
+    includeLastEmptyLine = true,
+    encoding = 'utf-8',
+    delimiter = /\r\n|\n|\r/g,
+  }: {
+    includeLastEmptyLine?: boolean
+    encoding?: string
+    delimiter?: string | RegExp
+  } = {}
 ): AsyncIterableIterator<string> {
   try {
     const response = await fetch(filepath)
-    const text = await response.text()
-    const re = /\r\n|\n|\r/g
+    const buffer = await response.arrayBuffer()
+    const decoder = new TextDecoder(encoding)
+    const text = decoder.decode(buffer)
+    const re: RegExp =
+      typeof delimiter === 'string'
+        ? new RegExp(escapeRegExp(delimiter), 'g')
+        : delimiter
     const rows = text.split(re)
     if (includeLastEmptyLine === false && rows[rows.length - 1] === '') {
       rows.pop()

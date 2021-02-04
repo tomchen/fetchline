@@ -1,5 +1,5 @@
-import test from 'ava'
-import readlineiter from '../src/index'
+const test = require('ava')
+const fetchline = require('../src/index')
 
 // "ELEL" means "Excluding Last Empty Line"
 
@@ -42,9 +42,7 @@ const filesToTest = [
   },
 ]
 
-async function iterator2array(
-  asynciter: AsyncIterableIterator<string>
-): Promise<string[]> {
+async function iterator2array(asynciter) {
   const ret = []
   for await (const x of asynciter) {
     ret.push(x)
@@ -61,13 +59,13 @@ for (const {
   linecountELEL,
 } of filesToTest) {
   test(`${filename} firstline`, async (t) => {
-    const iter = readlineiter(path)
+    const iter = fetchline(path)
 
     t.is((await iter.next()).value, firstline)
   })
 
   test(`${filename} linecount and lastline (includeLastEmptyLine=true (default))`, async (t) => {
-    const iter = readlineiter(path)
+    const iter = fetchline(path)
 
     const lines = await iterator2array(iter)
 
@@ -79,7 +77,7 @@ for (const {
   })
 
   test(`${filename} linecount and lastline (includeLastEmptyLine=false)`, async (t) => {
-    const iter = readlineiter(path, { includeLastEmptyLine: false })
+    const iter = fetchline(path, { includeLastEmptyLine: false })
 
     const lines = await iterator2array(iter)
 

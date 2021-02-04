@@ -1,5 +1,5 @@
 import test from 'ava'
-import readlineiter from '../src/index'
+import fetchline from '../src/index'
 
 const filesToTest = [
   {
@@ -15,8 +15,8 @@ const filesToTest = [
     path:
       'https://raw.githubusercontent.com/tomchen/readlineiter/main/testfile/lf_finalnewline',
     firstline: '3.',
-    lastline: '56787961303311646283996346460422090106105779458151', // last non-empty line in Node.js' fs/http and Deno&browser's fetch, but empty line in Deno fs and Deno&browser's naivefetch
-    linecount: 20001, // 20001 in Node.js' fs/http and Deno&browser's fetch, but 20002 including the empty line in Deno fs and Deno&browser's naivefetch
+    lastline: '56787961303311646283996346460422090106105779458151',
+    linecount: 20001,
   },
   {
     filename: 'crlf',
@@ -31,8 +31,8 @@ const filesToTest = [
     path:
       'https://raw.githubusercontent.com/tomchen/readlineiter/main/testfile/crlf_finalnewline',
     firstline: '3.',
-    lastline: '56787961303311646283996346460422090106105779458151', // last non-empty line in Node.js' fs/http and Deno&browser's fetch, but empty line in Deno fs and Deno&browser's naivefetch
-    linecount: 20001, // 20001 in Node.js' fs/http and Deno&browser's fetch, but 20002 including the empty line in Deno fs and Deno&browser's naivefetch
+    lastline: '56787961303311646283996346460422090106105779458151',
+    linecount: 20001,
   },
 ]
 
@@ -46,13 +46,13 @@ async function iterator2array<T>(asynciter: AsyncIterableIterator<T>): Promise<T
 
 for (const file of filesToTest) {
   test(`${file.filename} firstline`, async (t) => {
-    const iter: AsyncIterableIterator<string> = readlineiter(file.path)
+    const iter: AsyncIterableIterator<string> = fetchline(file.path)
 
     t.is((await iter.next()).value, file.firstline)
   })
 
   test(`${file.filename} linecount and lastline`, async (t) => {
-    const lines = await iterator2array(readlineiter(file.path))
+    const lines = await iterator2array(fetchline(file.path))
     const l = lines.length
 
     t.is(l, file.linecount)

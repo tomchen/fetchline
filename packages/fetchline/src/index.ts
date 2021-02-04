@@ -1,31 +1,3 @@
-import http from 'http'
-import https from 'https'
-
-const getChunkIteratorNode = async (
-  filepath: string
-): Promise<AsyncIterableIterator<Uint8Array>> => {
-  let h: typeof http | typeof https
-  const protocol = new URL(filepath).protocol
-  if (protocol === 'http:') {
-    h = http
-  } else if (protocol === 'https:') {
-    h = https
-  } else {
-    throw new Error(
-      'Invalid protocol. The URL must start with "http://" or "https://"'
-    )
-  }
-
-  return await new Promise((resolve, reject) => {
-    h.get(filepath, (res) => {
-      if (res.statusCode !== undefined && res.statusCode >= 400) {
-        reject(new Error(`HTTP Status: ${res.statusCode}`))
-      }
-      resolve(res[Symbol.asyncIterator]())
-    })
-  })
-}
-
 const escapeRegExp = (s: string): string =>
   s.replace(/[.*+\-?^${}()|[\]\\]/g, '\\$&')
 
@@ -38,15 +10,6 @@ const getChunkIteratorFetch = async (
   }
   return res.body.getReader()
 }
-
-const isNode =
-  typeof fetch !== 'function' &&
-  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-  // @ts-ignore
-  typeof global !== 'undefined' &&
-  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-  // @ts-ignore
-  {}.toString.call(global) === '[object global]'
 
 /**
  * Fetch and read text file line by line
@@ -70,25 +33,11 @@ export default async function* (
     delimiter?: string | RegExp
   } = {}
 ): AsyncIterableIterator<string> {
-  let reader
-  let nextMethodName
+  const reader = await getChunkIteratorFetch(filepath)
 
-  if (isNode) {
-    reader = await (getChunkIteratorNode as (
-      filepath: string
-    ) => Promise<AsyncIterableIterator<Uint8Array>>)(filepath)
-    nextMethodName = 'next'
-  } else {
-    reader = await getChunkIteratorFetch(filepath)
-    nextMethodName = 'read'
-  }
-
-  let { value: chunk, done: readerDone } = await (reader as typeof reader &
-    Record<typeof nextMethodName, () => { value: Uint8Array; done: boolean }>)[
-    nextMethodName
-  ]()
-  const textDec = new TextDecoder(encoding)
-  let chunkStr = chunk ? textDec.decode(chunk) : ''
+  let { value: chunk, done: readerDone } = await reader.read()
+  const decoder = new TextDecoder(encoding)
+  let chunkStr = chunk ? decoder.decode(chunk) : ''
 
   const re: RegExp =
     typeof delimiter === 'string'
@@ -104,12 +53,8 @@ export default async function* (
         break
       }
       const remainder = chunkStr.substring(startIndex)
-      ;({ value: chunk, done: readerDone } = await (reader as typeof reader &
-        Record<
-          typeof nextMethodName,
-          () => { value: Uint8Array; done: boolean }
-        >)[nextMethodName]())
-      chunkStr = remainder + (chunkStr ? textDec.decode(chunk) : '')
+      ;({ value: chunk, done: readerDone } = await reader.read())
+      chunkStr = remainder + (chunkStr ? decoder.decode(chunk) : '')
       startIndex = re.lastIndex = 0
       continue
     }

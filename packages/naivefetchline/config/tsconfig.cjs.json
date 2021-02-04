@@ -2,6 +2,7 @@
   "extends": "../tsconfig",
   "compilerOptions": {
     "module": "commonjs",
-    "outDir": "../dist/cjs"
+    "outDir": "../dist/cjs",
+    "tsBuildInfoFile": "./buildcache/cjs.tsbuildinfo"
   }
 }

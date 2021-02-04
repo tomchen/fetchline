@@ -3,7 +3,7 @@ module.exports = {
   entry: './src/index.ts',
   output: {
     filename: 'index.js',
-    library: 'readlineiter',
+    library: 'fetchline',
     libraryExport: "default",
     libraryTarget: 'umd',
   },

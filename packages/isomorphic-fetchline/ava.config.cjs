@@ -1,1 +1,4 @@
-module.exports = require('../../baseconfig/ava.config.cjs')
+module.exports = {
+  files: ['test/**/*.test.js'],
+  extensions: ['js'],
+}

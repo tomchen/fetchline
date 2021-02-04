@@ -1,5 +1,5 @@
 import { assertEquals } from 'https://deno.land/std@0.85.0/testing/asserts.ts'
-import readlineiter from '../mod.ts'
+import fetchline from '../mod.ts'
 
 const filesToTest = [
   {
@@ -13,8 +13,8 @@ const filesToTest = [
     filename: 'lf_finalnewline',
     path: '../../testfile/lf_finalnewline',
     firstline: '3.',
-    lastline: '', // last non-empty line in Node.js' fs/http and Deno&browser's fetch, but empty line in Deno fs and Deno&browser's naivefetch
-    linecount: 20002, // 20001 in Node.js' fs/http and Deno&browser's fetch, but 20002 including the empty line in Deno fs and Deno&browser's naivefetch
+    lastline: '',
+    linecount: 20002,
   },
   {
     filename: 'crlf',
@@ -27,8 +27,8 @@ const filesToTest = [
     filename: 'crlf_finalnewline',
     path: '../../testfile/crlf_finalnewline',
     firstline: '3.',
-    lastline: '', // last non-empty line in Node.js' fs/http and Deno&browser's fetch, but empty line in Deno fs and Deno&browser's naivefetch
-    linecount: 20002, // 20001 in Node.js' fs/http and Deno&browser's fetch, but 20002 including the empty line in Deno fs and Deno&browser's naivefetch
+    lastline: '',
+    linecount: 20002,
   },
 ]
 
@@ -42,7 +42,7 @@ async function iterator2array<T>(asynciter: AsyncIterableIterator<T>): Promise<T
 
 for (const file of filesToTest) {
   Deno.test(`${file.filename} firstline`, async () => {
-    const iter: AsyncIterableIterator<string> = readlineiter(file.path)
+    const iter: AsyncIterableIterator<string> = fetchline(file.path)
 
     assertEquals((await iter.next()).value, file.firstline)
 
@@ -52,7 +52,7 @@ for (const file of filesToTest) {
   })
 
   Deno.test(`${file.filename} linecount and lastline`, async () => {
-    const lines = await iterator2array(readlineiter(file.path))
+    const lines = await iterator2array(fetchline(file.path))
     const l = lines.length
 
     assertEquals(l, file.linecount)

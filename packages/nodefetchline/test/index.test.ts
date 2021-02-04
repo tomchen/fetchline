@@ -1,5 +1,5 @@
 import test from 'ava'
-import readlineiter from '../src/index'
+import fetchline from '../src/index'
 
 // "ELEL" means "Excluding Last Empty Line"
 
@@ -61,13 +61,13 @@ for (const {
   linecountELEL,
 } of filesToTest) {
   test(`${filename} firstline`, async (t) => {
-    const iter = readlineiter(path)
+    const iter = fetchline(path)
 
     t.is((await iter.next()).value, firstline)
   })
 
   test(`${filename} linecount and lastline (includeLastEmptyLine=true (default))`, async (t) => {
-    const iter = readlineiter(path)
+    const iter = fetchline(path)
 
     const lines = await iterator2array(iter)
 
@@ -79,7 +79,7 @@ for (const {
   })
 
   test(`${filename} linecount and lastline (includeLastEmptyLine=false)`, async (t) => {
-    const iter = readlineiter(path, { includeLastEmptyLine: false })
+    const iter = fetchline(path, { includeLastEmptyLine: false })
 
     const lines = await iterator2array(iter)
 

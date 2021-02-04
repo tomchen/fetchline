@@ -82,13 +82,13 @@ for (const {
   linecountELEL,
 } of filesToTest) {
   test(`${filename} firstline`, async () => {
-    const iter = readlineiter(path)
+    const iter = fetchline(path)
 
     assertEquals((await iter.next()).value, firstline)
   })
 
   test(`${filename} linecount and lastline (includeLastEmptyLine=true (default))`, async () => {
-    const iter = readlineiter(path)
+    const iter = fetchline(path)
 
     const lines = await iterator2array(iter)
 
@@ -100,7 +100,7 @@ for (const {
   })
 
   test(`${filename} linecount and lastline (includeLastEmptyLine=false)`, async () => {
-    const iter = readlineiter(path, { includeLastEmptyLine: false })
+    const iter = fetchline(path, { includeLastEmptyLine: false })
 
     const lines = await iterator2array(iter)
 

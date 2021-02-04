@@ -65,9 +65,6 @@ const filesToTest = [
   },
 ]
 
-// lastlineELEL: '56787961303311646283996346460422090106105779458151', // last non-empty line in Node.js' fs/http and Deno&browser's fetch, but empty line in Deno fs and Deno&browser's naivefetch
-// linecount: 20002, // 20001 in Node.js and Deno&browser's fetch, but 20002 including the empty line in Deno fs and Deno's naivefetch
-
 async function iterator2array(asynciter) {
   const ret = []
   for await (const x of asynciter) {
@@ -85,13 +82,16 @@ for (const {
   linecountELEL,
 } of filesToTest) {
   test(`${filename} firstline`, async () => {
-    const iter = readlineiter(path, false)
+    const iter = fetchline(path)
 
     assertEquals((await iter.next()).value, firstline)
   })
 
   test(`${filename} linecount and lastline (includeLastEmptyLine=true (default))`, async () => {
-    const lines = await iterator2array(readlineiter(path))
+    const iter = fetchline(path)
+
+    const lines = await iterator2array(iter)
+
     const l = lines.length
 
     assertEquals(l, lastLineIsEmpty ? linecountELEL + 1 : linecountELEL)
@@ -100,7 +100,10 @@ for (const {
   })
 
   test(`${filename} linecount and lastline (includeLastEmptyLine=false)`, async () => {
-    const lines = await iterator2array(readlineiter(path, false))
+    const iter = fetchline(path, { includeLastEmptyLine: false })
+
+    const lines = await iterator2array(iter)
+
     const l = lines.length
 
     assertEquals(l, linecountELEL)
