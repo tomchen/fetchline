@@ -1,18 +1,21 @@
 {
-  "name": "@readline/nodefs",
+  "name": "naivefetchline",
   "version": "1.0.0-rc.1",
   "description": "Read text file (remote over HTTP(S) or local) line by line as async iterator, with Node, browsers and Deno",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
+  "browsers": "dist/umd/index.js",
+  "umd:main": "dist/umd/index.js",
   "types": "dist/types/index.d.js",
   "scripts": {
-    "build": "npm run build:cjs && npm run build:esm && npm run build:types",
+    "build": "npm run build:cjs && npm run build:esm && npm run build:umd && npm run build:types",
     "build:cjs": "rimraf dist/cjs && tsc -p config/tsconfig.cjs.json",
     "build:esm": "rimraf dist/esm && tsc -p config/tsconfig.esm.json",
+    "build:umd": "rimraf dist/umd && webpack --config config/webpack.config.js && rimraf src/index.d.ts src/index.js",
     "build:types": "rimraf dist/types && tsc -p config/tsconfig.types.json",
     "clean": "rimraf dist",
     "package": "npm run build && npm pack",
-    "test": "ava --config ava.config.cjs"
+    "test": "deno test test/index.deno.test.ts --allow-net"
   },
   "publishConfig": {
     "access": "public"

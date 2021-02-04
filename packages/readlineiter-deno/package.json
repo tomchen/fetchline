@@ -1,0 +1,9 @@
+{
+  "name": "readlineiter-deno",
+  "scripts": {
+    "test": "deno test --allow-read"
+  },
+  "author": "Tom Chen <tomchen.org@gmail.com>",
+  "license": "MIT",
+  "homepage": "https://github.com/tomchen/readlineiter"
+}

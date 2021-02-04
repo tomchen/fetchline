@@ -42,7 +42,9 @@ const filesToTest = [
   },
 ]
 
-async function iterator2array(asynciter) {
+async function iterator2array(
+  asynciter: AsyncIterableIterator<string>
+): Promise<string[]> {
   const ret = []
   for await (const x of asynciter) {
     ret.push(x)

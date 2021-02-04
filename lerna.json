@@ -1,6 +1,11 @@
 {
   "packages": [
-    "packages/*"
+    "packages/fetchline",
+    "packages/nodefetchline",
+    "packages/isomorphic-fetchline",
+    "packages/naivefetchline",
+    "packages/getfileline",
+    "packages/readlineiter"
   ],
   "npmClient": "yarn",
   "useWorkspaces": true,

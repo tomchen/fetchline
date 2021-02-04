@@ -1,0 +1,7 @@
+{
+  "extends": "../tsconfig",
+  "compilerOptions": {
+    "module": "commonjs"
+    // "declaration": false /* Generates corresponding '.d.ts' file. */
+  }
+}
