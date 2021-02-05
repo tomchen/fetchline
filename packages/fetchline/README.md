@@ -19,7 +19,7 @@ Read text file (remote over HTTP(S) or local) line by line as async iterator, wi
     <th rowspan="2" title="Whether it is recommended">Rec?</th>
     <th colspan="3">Fetch remote file over HTTP(S)</th>
     <th colspan="2">Read local file</th>
-    <th rowspan="2">npm<br>version</th>
+    <th rowspan="2">Version</th>
   </tr>
   <tr>
     <td align="center"><img src="https://raw.githubusercontent.com/tomchen/fetchline/main/images/node.svg" title="Node.js" alt="Node.js" width="50px" height="50px"></td>
