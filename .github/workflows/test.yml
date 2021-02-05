@@ -27,11 +27,8 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node }}
-      - name: Install modules and build
-        run: |
-          yarn
-          yarn bootstrap
-          yarn build
+      - name: Install modules
+        run: yarn
       - name: Run tests
         run: yarn test:node
 
@@ -52,10 +49,7 @@ jobs:
         uses: denolib/setup-deno@v2
         with:
           deno-version: ${{ matrix.deno }}
-      - name: Install modules and build
-        run: |
-          yarn
-          yarn bootstrap
-          yarn build
+      - name: Install modules
+        run: yarn
       - name: Run Deno tests
         run: yarn test:deno
