@@ -19,13 +19,13 @@ Read text file (remote over HTTP(S) or local) line by line as async iterator, wi
     <th rowspan="2" title="Whether it is recommended">Rec?</th>
     <th colspan="3">Fetch remote file over HTTP(S)</th>
     <th colspan="2">Read local file</th>
-    <th rowspan="2">Version with npm link</th>
+    <th rowspan="2">npm<br>version</th>
   </tr>
   <tr>
     <td align="center"><img src="https://raw.githubusercontent.com/tomchen/fetchline/main/images/node.svg" title="Node.js" alt="Node.js" width="50px" height="50px"></td>
     <td align="center"><img src="https://raw.githubusercontent.com/tomchen/fetchline/main/images/deno.svg" title="Deno" alt="Deno" width="50px" height="50px"></td>
-    <td align="center"><img src="https://raw.githubusercontent.com/tomchen/fetchline/main/images/chrome.svg" title="Google Chrome" alt="Google Chrome" width="30px" height="30px"><img src="https://raw.githubusercontent.com/tomchen/fetchline/main/images/firefox.svg" title="Firefox" alt="Firefox" width="30px" height="30px"><img src="https://raw.githubusercontent.com/tomchen/fetchline/main/images/safari.svg" title="Safari" alt="Safari" width="30px" height="30px"><br>
-    <img src="https://raw.githubusercontent.com/tomchen/fetchline/main/images/edge.svg" title="Microsoft Edge" alt="Microsoft Edge" width="30px" height="30px"><img src="https://raw.githubusercontent.com/tomchen/fetchline/main/images/opera.svg" title="Opera" alt="Opera" width="30px" height="30px"><img src="https://raw.githubusercontent.com/tomchen/fetchline/main/images/samsung_internet.svg" title="Samsung Internet" alt="Samsung Internet" width="30px" height="30px"></td>
+    <td align="center"><img src="https://raw.githubusercontent.com/tomchen/fetchline/main/images/chrome.svg" title="Google Chrome" alt="Google Chrome" width="25px" height="25px"><img src="https://raw.githubusercontent.com/tomchen/fetchline/main/images/firefox.svg" title="Firefox" alt="Firefox" width="25px" height="25px"><img src="https://raw.githubusercontent.com/tomchen/fetchline/main/images/safari.svg" title="Safari" alt="Safari" width="25px" height="25px"><br>
+    <img src="https://raw.githubusercontent.com/tomchen/fetchline/main/images/edge.svg" title="Microsoft Edge" alt="Microsoft Edge" width="25px" height="25px"><img src="https://raw.githubusercontent.com/tomchen/fetchline/main/images/opera.svg" title="Opera" alt="Opera" width="25px" height="25px"><img src="https://raw.githubusercontent.com/tomchen/fetchline/main/images/samsung_internet.svg" title="Samsung Internet" alt="Samsung Internet" width="25px" height="25px"></td>
     <td align="center"><img src="https://raw.githubusercontent.com/tomchen/fetchline/main/images/node.svg" title="Node.js" alt="Node.js" width="50px" height="50px"></td>
     <td align="center"><img src="https://raw.githubusercontent.com/tomchen/fetchline/main/images/deno.svg" title="Deno" alt="Deno" width="50px" height="50px"></td>
   </tr>
@@ -39,7 +39,7 @@ Read text file (remote over HTTP(S) or local) line by line as async iterator, wi
     <td align="center" title="Yes">✅</td>
     <td align="center"></td>
     <td align="center"></td>
-    <td align="center"><a href="https://www.npmjs.com/package/fetchline" title="fetchline's npm page"><img src="https://img.shields.io/npm/v/fetchline?color=green&label=version" alt="version number"></a></td>
+    <td align="center"><a href="https://www.npmjs.com/package/fetchline" title="fetchline's npm page"><img src="https://img.shields.io/npm/v/fetchline?color=green&label=" alt="version number"></a></td>
   </tr>
   <tr>
     <td><a href="#fetchline-nodefetchline-isomorphic-fetchline-and-naivefetchline">nodefetchline</a></td>
@@ -49,7 +49,7 @@ Read text file (remote over HTTP(S) or local) line by line as async iterator, wi
     <td align="center"></td>
     <td align="center"></td>
     <td align="center"></td>
-    <td align="center"><a href="https://www.npmjs.com/package/nodefetchline" title="nodefetchline's npm page"><img src="https://img.shields.io/npm/v/nodefetchline?color=green&label=version" alt="version number"></a></td>
+    <td align="center"><a href="https://www.npmjs.com/package/nodefetchline" title="nodefetchline's npm page"><img src="https://img.shields.io/npm/v/nodefetchline?color=green&label=" alt="version number"></a></td>
   </tr>
   <tr>
     <td><a href="#fetchline-nodefetchline-isomorphic-fetchline-and-naivefetchline">isomorphic-fetchline</a></td>
@@ -59,7 +59,7 @@ Read text file (remote over HTTP(S) or local) line by line as async iterator, wi
     <td align="center" title="Yes">✅</td>
     <td align="center"></td>
     <td align="center"></td>
-    <td align="center"><a href="https://www.npmjs.com/package/isomorphic-fetchline" title="isomorphic-fetchline's npm page"><img src="https://img.shields.io/npm/v/isomorphic-fetchline?color=green&label=version" alt="version number"></a></td>
+    <td align="center"><a href="https://www.npmjs.com/package/isomorphic-fetchline" title="isomorphic-fetchline's npm page"><img src="https://img.shields.io/npm/v/isomorphic-fetchline?color=green&label=" alt="version number"></a></td>
   </tr>
   <tr>
     <td><a href="#fetchline-nodefetchline-isomorphic-fetchline-and-naivefetchline">naivefetchline</a></td>
@@ -69,7 +69,7 @@ Read text file (remote over HTTP(S) or local) line by line as async iterator, wi
     <td align="center" title="Yes">✅</td>
     <td align="center"></td>
     <td align="center"></td>
-    <td align="center"><a href="https://www.npmjs.com/package/naivefetchline" title="naivefetchline's npm page"><img src="https://img.shields.io/npm/v/naivefetchline?color=green&label=version" alt="version number"></a></td>
+    <td align="center"><a href="https://www.npmjs.com/package/naivefetchline" title="naivefetchline's npm page"><img src="https://img.shields.io/npm/v/naivefetchline?color=green&label=" alt="version number"></a></td>
   </tr>
   <tr>
     <td><a href="#readlineiter-readlineiter-for-deno-and-getfileline">getfileline</a></td>
@@ -79,7 +79,7 @@ Read text file (remote over HTTP(S) or local) line by line as async iterator, wi
     <td align="center"></td>
     <td align="center"></td>
     <td align="center"></td>
-    <td align="center"><a href="https://www.npmjs.com/package/getfileline" title="getfileline's npm page"><img src="https://img.shields.io/npm/v/getfileline?color=green&label=version" alt="version number"></a></td>
+    <td align="center"><a href="https://www.npmjs.com/package/getfileline" title="getfileline's npm page"><img src="https://img.shields.io/npm/v/getfileline?color=green&label=" alt="version number"></a></td>
   </tr>
   <tr>
     <td><a href="#readlineiter-readlineiter-for-deno-and-getfileline">readlineiter</a></td>
@@ -89,7 +89,7 @@ Read text file (remote over HTTP(S) or local) line by line as async iterator, wi
     <td align="center"></td>
     <td align="center" title="Yes">✅</td>
     <td align="center"></td>
-    <td align="center"><a href="https://www.npmjs.com/package/readlineiter" title="readlineiter's npm page"><img src="https://img.shields.io/npm/v/readlineiter?color=green&label=version" alt="version number"></a></td>
+    <td align="center"><a href="https://www.npmjs.com/package/readlineiter" title="readlineiter's npm page"><img src="https://img.shields.io/npm/v/readlineiter?color=green&label=" alt="version number"></a></td>
   </tr>
   <tr>
     <td><a href="#readlineiter-readlineiter-for-deno-and-getfileline">readlineiter for Deno</a></td>
