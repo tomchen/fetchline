@@ -1,9 +1,7 @@
-import { BufReader, readLines } from 'https://deno.land/std@0.84.0/io/bufio.ts'
+import { BufReader, readLines } from 'https://deno.land/std/io/bufio.ts'
 
 /**
- * Read text file line by line
- *
- * With Deno file system. To be used for Deno to read local file
+ * Read local text file line by line with Deno
  *
  * @param filepath - Path of the text file
  *

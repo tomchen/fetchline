@@ -2,12 +2,13 @@ const escapeRegExp = (s: string): string =>
   s.replace(/[.*+\-?^${}()|[\]\\]/g, '\\$&')
 
 /**
- * Fetch and read text file line by line
- *
- * With native `fetch()` method. To be used for modern browsers or Deno to fetch remote file over HTTP(S)
+ * Fetch and read remote text file line by line over HTTP(S) with modern browsers or Deno (naive approach)
  *
  * @param filepath - URL of the text file
- * @param includeLastEmptyLine - Should it count the last empty line?
+ * @param options - options, including the following three
+ * @param options.includeLastEmptyLine - Should it count the last empty line?
+ * @param options.encoding - File encoding
+ * @param options.delimiter - Line (or other item)'s delimiter / separator
  *
  * @returns An asynchronous iterable iterator containing each line in string from the text file
  */

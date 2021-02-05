@@ -2,9 +2,7 @@ import * as fs from 'fs'
 import * as readline from 'readline'
 
 /**
- * Read text file line by line
- *
- * With Node.js `fs` lib. To be used for Node.js to read local file
+ * Read local text file line by line with Node.js
  *
  * @param filepath - Path of the text file
  *

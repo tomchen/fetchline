@@ -6,13 +6,14 @@
     "build": "lerna run build",
     "test:node": "lerna run test:node",
     "test:deno": "lerna run test:deno",
-    "cleandist": "rimraf packages/**/dist",
-    "cleanbuildcache": "rimraf packages/**/buildcache",
+    "test": "yarn run test:node && yarn run test:deno",
+    "clean:nodemodules": "lerna clean",
+    "clean:dist": "rimraf packages/**/dist",
+    "clean:buildcache": "rimraf packages/**/buildcache",
     "rebuild": "yarn run cleanbuildcache && yarn run build"
   },
   "devDependencies": {
     "lerna": "^3.22.1",
-    "lerna-wizard": "^1.1.1",
     "@typescript-eslint/eslint-plugin": "^4.14.2",
     "@typescript-eslint/parser": "^4.14.2",
     "eslint": "^7.19.0",

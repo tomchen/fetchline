@@ -3,9 +3,7 @@ import https from 'https'
 import readline from 'readline'
 
 /**
- * Fetch and read text file line by line
- *
- * With Node.js `http`/`https` lib. To be used for Node.js to fetch remote file over HTTP(S)
+ * Fetch and read remote text file line by line over HTTP(S) with Node.js
  *
  * @param filepath - URL of the text file
  *
