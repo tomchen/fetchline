@@ -8,7 +8,7 @@ import * as readline from 'readline'
  *
  * @returns An asynchronous iterable iterator containing each line in string from the text file
  */
-export default (filepath: string): AsyncIterableIterator<string> => {
+const readlineiter = (filepath: string): AsyncIterableIterator<string> => {
   const fileStream = fs.createReadStream(filepath, {
     encoding: 'utf-8',
   })
@@ -18,3 +18,9 @@ export default (filepath: string): AsyncIterableIterator<string> => {
   })
   return rl[Symbol.asyncIterator]()
 }
+
+export default readlineiter
+
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
+export = readlineiter

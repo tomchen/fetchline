@@ -4,8 +4,8 @@ module.exports = {
   output: {
     filename: 'index.js',
     library: 'fetchline',
-    libraryExport: "default",
     libraryTarget: 'umd',
+    globalObject: 'this',
   },
   // devtool: 'source-map',
   module: {

@@ -144,12 +144,12 @@ const lineIterator =
 
 Change `'fetchline'` to `nodefetchline`, `isomorphic-fetchline`, or `naivefetchline` if you use these packages instead.
 
-Change the `import` line to `const fetchline = require('fetchline')` if you use Node's CommonJS.
+Change the `import` line to syntax like `const nodefetchline = require('nodefetchline')` if you use nodefetchline or isomorphic-fetchline package in Node's CommonJS.
 
 For browsers:
 
 ```html
-<script src="https://unpkg.com/fetchline"></script>
+<script src="https://unpkg.com/fetchline/dist/umd"></script>
 <script>
 fetchline(...) // same as above
 </script>

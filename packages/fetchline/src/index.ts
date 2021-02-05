@@ -22,7 +22,7 @@ const getChunkIteratorFetch = async (
  *
  * @returns An asynchronous iterable iterator containing each line in string from the text file
  */
-export default async function* (
+export default async function* fetchline(
   filepath: string,
   {
     includeLastEmptyLine = true,
@@ -74,3 +74,7 @@ export default async function* (
     yield chunkStr.substring(startIndex)
   }
 }
+
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
+export = fetchline

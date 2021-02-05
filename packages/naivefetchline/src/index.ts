@@ -12,7 +12,7 @@ const escapeRegExp = (s: string): string =>
  *
  * @returns An asynchronous iterable iterator containing each line in string from the text file
  */
-export default async function* (
+export default async function* naivefetchline(
   filepath: string,
   {
     includeLastEmptyLine = true,
@@ -51,3 +51,7 @@ export default async function* (
     throw error
   }
 }
+
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
+export = naivefetchline
