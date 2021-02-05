@@ -10,7 +10,8 @@
     "clean:nodemodules": "lerna clean",
     "clean:dist": "rimraf packages/**/dist",
     "clean:buildcache": "rimraf packages/**/buildcache",
-    "rebuild": "yarn run cleanbuildcache && yarn run build"
+    "rebuild": "yarn run cleanbuildcache && yarn run build",
+    "publish": "lerna publish"
   },
   "devDependencies": {
     "lerna": "^3.22.1",

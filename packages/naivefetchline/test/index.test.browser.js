@@ -30,7 +30,7 @@ const filesToTest = [
   {
     filename: 'lf',
     path:
-      'https://raw.githubusercontent.com/tomchen/readlineiter/main/testfile/lf',
+      'https://raw.githubusercontent.com/tomchen/fetchline/main/testfile/lf',
     firstline: '3.',
     lastLineIsEmpty: false,
     lastlineELEL: '56787961303311646283996346460422090106105779458151',
@@ -39,7 +39,7 @@ const filesToTest = [
   {
     filename: 'lf_finalnewline',
     path:
-      'https://raw.githubusercontent.com/tomchen/readlineiter/main/testfile/lf_finalnewline',
+      'https://raw.githubusercontent.com/tomchen/fetchline/main/testfile/lf_finalnewline',
     firstline: '3.',
     lastLineIsEmpty: true,
     lastlineELEL: '56787961303311646283996346460422090106105779458151',
@@ -48,7 +48,7 @@ const filesToTest = [
   {
     filename: 'crlf',
     path:
-      'https://raw.githubusercontent.com/tomchen/readlineiter/main/testfile/crlf',
+      'https://raw.githubusercontent.com/tomchen/fetchline/main/testfile/crlf',
     firstline: '3.',
     lastLineIsEmpty: false,
     lastlineELEL: '56787961303311646283996346460422090106105779458151',
@@ -57,7 +57,7 @@ const filesToTest = [
   {
     filename: 'crlf_finalnewline',
     path:
-      'https://raw.githubusercontent.com/tomchen/readlineiter/main/testfile/crlf_finalnewline',
+      'https://raw.githubusercontent.com/tomchen/fetchline/main/testfile/crlf_finalnewline',
     firstline: '3.',
     lastLineIsEmpty: true,
     lastlineELEL: '56787961303311646283996346460422090106105779458151',

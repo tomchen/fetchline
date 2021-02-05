@@ -4,6 +4,8 @@ Read text file (remote over HTTP(S) or local) line by line as async iterator, wi
 
 [This GitHub monorepo](https://github.com/tomchen/fetchline/) hosts 6 released npm packages and 1 Deno module. They all serve a similar, simple purpose: read text file line by line and return an asynchronous iterable iterator of strings. They all try to be efficient and fast, and are written in TypeScript. However, their environment / platforms and exact purpose, features and behavior differ.
 
+[![Actions Status](https://github.com/tomchen/fetchline/workflows/Test/badge.svg)](https://github.com/tomchen/fetchline/actions) [![License](https://img.shields.io/github/license/tomchen/fetchline)](https://github.com/tomchen/fetchline/blob/main/LICENSE)
+
 **TLDR: read the ["Purpose & environment" table](#purpose--environment), pick the package you need, have a look at the [Usage section](#usage), know at least a little bit about JavaScript's [async / await](#async--await), and go ahead to use them.**
 
 ## Comparison
@@ -17,6 +19,7 @@ Read text file (remote over HTTP(S) or local) line by line as async iterator, wi
     <th rowspan="2" title="Whether it is recommended">Rec?</th>
     <th colspan="3">Fetch remote file over HTTP(S)</th>
     <th colspan="2">Read local file</th>
+    <th rowspan="2">Version with npm link</th>
   </tr>
   <tr>
     <td align="center"><img src="https://raw.githubusercontent.com/tomchen/fetchline/main/images/node.svg" title="Node.js" alt="Node.js" width="50px" height="50px"></td>
@@ -36,6 +39,7 @@ Read text file (remote over HTTP(S) or local) line by line as async iterator, wi
     <td align="center" title="Yes">✅</td>
     <td align="center"></td>
     <td align="center"></td>
+    <td align="center">[![version number](https://img.shields.io/npm/v/fetchline?color=green&label=version)](https://www.npmjs.com/package/fetchline)</td>
   </tr>
   <tr>
     <td><a href="#fetchline-nodefetchline-isomorphic-fetchline-and-naivefetchline">nodefetchline</a></td>
@@ -45,6 +49,7 @@ Read text file (remote over HTTP(S) or local) line by line as async iterator, wi
     <td align="center"></td>
     <td align="center"></td>
     <td align="center"></td>
+    <td align="center">[![version number](https://img.shields.io/npm/v/nodefetchline?color=green&label=version)](https://www.npmjs.com/package/nodefetchline)</td>
   </tr>
   <tr>
     <td><a href="#fetchline-nodefetchline-isomorphic-fetchline-and-naivefetchline">isomorphic-fetchline</a></td>
@@ -54,6 +59,7 @@ Read text file (remote over HTTP(S) or local) line by line as async iterator, wi
     <td align="center" title="Yes">✅</td>
     <td align="center"></td>
     <td align="center"></td>
+    <td align="center">[![version number](https://img.shields.io/npm/v/isomorphic-fetchline?color=green&label=version)](https://www.npmjs.com/package/isomorphic-fetchline)</td>
   </tr>
   <tr>
     <td><a href="#fetchline-nodefetchline-isomorphic-fetchline-and-naivefetchline">naivefetchline</a></td>
@@ -63,6 +69,7 @@ Read text file (remote over HTTP(S) or local) line by line as async iterator, wi
     <td align="center" title="Yes">✅</td>
     <td align="center"></td>
     <td align="center"></td>
+    <td align="center">[![version number](https://img.shields.io/npm/v/naivefetchline?color=green&label=version)](https://www.npmjs.com/package/naivefetchline)</td>
   </tr>
   <tr>
     <td><a href="#readlineiter-readlineiter-for-deno-and-getfileline">getfileline</a></td>
@@ -72,6 +79,7 @@ Read text file (remote over HTTP(S) or local) line by line as async iterator, wi
     <td align="center"></td>
     <td align="center"></td>
     <td align="center"></td>
+    <td align="center">[![version number](https://img.shields.io/npm/v/getfileline?color=green&label=version)](https://www.npmjs.com/package/getfileline)</td>
   </tr>
   <tr>
     <td><a href="#readlineiter-readlineiter-for-deno-and-getfileline">readlineiter</a></td>
@@ -81,6 +89,7 @@ Read text file (remote over HTTP(S) or local) line by line as async iterator, wi
     <td align="center"></td>
     <td align="center" title="Yes">✅</td>
     <td align="center"></td>
+    <td align="center">[![version number](https://img.shields.io/npm/v/readlineiter?color=green&label=version)](https://www.npmjs.com/package/readlineiter)</td>
   </tr>
   <tr>
     <td><a href="#readlineiter-readlineiter-for-deno-and-getfileline">readlineiter for Deno</a></td>
@@ -90,6 +99,7 @@ Read text file (remote over HTTP(S) or local) line by line as async iterator, wi
     <td align="center"></td>
     <td align="center"></td>
     <td align="center" title="Yes">✅</td>
+    <td align="center"></td>
   </tr>
 </tbody>
 </table>
