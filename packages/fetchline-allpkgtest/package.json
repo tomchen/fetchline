@@ -1,8 +1,10 @@
 {
-  "name": "fetchline-deno",
+  "name": "fetchline-allpkgtest",
   "private": true,
+  "version": "0.0.0",
   "scripts": {
-    "test:deno": "deno test --allow-read ./test"
+    "test:node": "ava --config ava.config.cjs",
+    "test:deno": "deno test --allow-read --allow-net"
   },
   "author": "Tom Chen <tomchen.org@gmail.com>",
   "license": "MIT",
@@ -14,7 +16,11 @@
   "bugs": {
     "url": "https://github.com/tomchen/fetchline/issues"
   },
-  "engines": {
-    "deno": ">= 1.2.0"
+  "devDependencies": {
+    "ava": "^3.0.2",
+    "rimraf": "^3.0.2",
+    "ts-loader": "^8.0.14",
+    "ts-node": "^9.1.1",
+    "typescript": "^4.1.3"
   }
 }

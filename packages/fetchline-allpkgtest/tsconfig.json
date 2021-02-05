@@ -1,0 +1,3 @@
+{
+  "extends": "../../baseconfig/tsconfig.base"
+}

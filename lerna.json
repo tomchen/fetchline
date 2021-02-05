@@ -5,7 +5,8 @@
     "packages/isomorphic-fetchline",
     "packages/naivefetchline",
     "packages/getfileline",
-    "packages/readlineiter"
+    "packages/readlineiter",
+    "packages/fetchline-allpkgtest"
   ],
   "npmClient": "yarn",
   "useWorkspaces": true,
