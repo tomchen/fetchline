@@ -29,6 +29,8 @@ jobs:
           node-version: ${{ matrix.node }}
       - name: Install modules
         run: yarn
+        run: yarn bootstrap
+        run: yarn build
       - name: Run tests
         run: yarn test:node
 
@@ -51,5 +53,7 @@ jobs:
           deno-version: ${{ matrix.deno }}
       - name: Install modules
         run: yarn
+        run: yarn bootstrap
+        run: yarn build
       - name: Run Deno tests
         run: yarn test:deno
