@@ -11,8 +11,9 @@
     "clean:dist": "rimraf packages/**/dist",
     "clean:buildcache": "rimraf packages/**/buildcache",
     "rebuild": "yarn run clean:buildcache && yarn run build",
-    "prepublishOnly": "yarn run rebuild",
-    "publishall": "lerna publish"
+    "prepublishOnly": "yarn run rebuild && copyreadme",
+    "publishall": "lerna publish",
+    "copyreadme": "cp README.md packages/fetchline && cp README.md packages/nodefetchline && cp README.md packages/isomorphic-fetchline && cp README.md packages/naivefetchline && cp README.md packages/getfileline && cp README.md packages/readlineiter"
   },
   "devDependencies": {
     "lerna": "^3.22.1",
