@@ -1,6 +1,6 @@
 {
   "name": "nodefetchline",
-  "version": "1.0.0-rc.4",
+  "version": "1.0.0-rc.5",
   "description": "Read text file (remote over HTTP(S) or local) line by line as async iterator, with Node, browsers and Deno",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
