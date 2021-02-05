@@ -1,7 +1,7 @@
 {
   "name": "fetchline-allpkgtest",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.0.0",
   "scripts": {
     "test:node": "ava --config ava.config.cjs",
     "test:deno": "deno test --allow-read --allow-net"
