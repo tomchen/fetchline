@@ -39,7 +39,7 @@ Read text file (remote over HTTP(S) or local) line by line as async iterator, wi
     <td align="center" title="Yes">✅</td>
     <td align="center"></td>
     <td align="center"></td>
-    <td align="center">[![version number](https://img.shields.io/npm/v/fetchline?color=green&label=version)](https://www.npmjs.com/package/fetchline)</td>
+    <td align="center"><a href="https://www.npmjs.com/package/fetchline" title="fetchline's npm page"><img src="https://img.shields.io/npm/v/fetchline?color=green&label=version" alt="version number"></a></td>
   </tr>
   <tr>
     <td><a href="#fetchline-nodefetchline-isomorphic-fetchline-and-naivefetchline">nodefetchline</a></td>
@@ -49,7 +49,7 @@ Read text file (remote over HTTP(S) or local) line by line as async iterator, wi
     <td align="center"></td>
     <td align="center"></td>
     <td align="center"></td>
-    <td align="center">[![version number](https://img.shields.io/npm/v/nodefetchline?color=green&label=version)](https://www.npmjs.com/package/nodefetchline)</td>
+    <td align="center"><a href="https://www.npmjs.com/package/nodefetchline" title="nodefetchline's npm page"><img src="https://img.shields.io/npm/v/nodefetchline?color=green&label=version" alt="version number"></a></td>
   </tr>
   <tr>
     <td><a href="#fetchline-nodefetchline-isomorphic-fetchline-and-naivefetchline">isomorphic-fetchline</a></td>
@@ -59,7 +59,7 @@ Read text file (remote over HTTP(S) or local) line by line as async iterator, wi
     <td align="center" title="Yes">✅</td>
     <td align="center"></td>
     <td align="center"></td>
-    <td align="center">[![version number](https://img.shields.io/npm/v/isomorphic-fetchline?color=green&label=version)](https://www.npmjs.com/package/isomorphic-fetchline)</td>
+    <td align="center"><a href="https://www.npmjs.com/package/isomorphic-fetchline" title="isomorphic-fetchline's npm page"><img src="https://img.shields.io/npm/v/isomorphic-fetchline?color=green&label=version" alt="version number"></a></td>
   </tr>
   <tr>
     <td><a href="#fetchline-nodefetchline-isomorphic-fetchline-and-naivefetchline">naivefetchline</a></td>
@@ -69,7 +69,7 @@ Read text file (remote over HTTP(S) or local) line by line as async iterator, wi
     <td align="center" title="Yes">✅</td>
     <td align="center"></td>
     <td align="center"></td>
-    <td align="center">[![version number](https://img.shields.io/npm/v/naivefetchline?color=green&label=version)](https://www.npmjs.com/package/naivefetchline)</td>
+    <td align="center"><a href="https://www.npmjs.com/package/naivefetchline" title="naivefetchline's npm page"><img src="https://img.shields.io/npm/v/naivefetchline?color=green&label=version" alt="version number"></a></td>
   </tr>
   <tr>
     <td><a href="#readlineiter-readlineiter-for-deno-and-getfileline">getfileline</a></td>
@@ -79,7 +79,7 @@ Read text file (remote over HTTP(S) or local) line by line as async iterator, wi
     <td align="center"></td>
     <td align="center"></td>
     <td align="center"></td>
-    <td align="center">[![version number](https://img.shields.io/npm/v/getfileline?color=green&label=version)](https://www.npmjs.com/package/getfileline)</td>
+    <td align="center"><a href="https://www.npmjs.com/package/getfileline" title="getfileline's npm page"><img src="https://img.shields.io/npm/v/getfileline?color=green&label=version" alt="version number"></a></td>
   </tr>
   <tr>
     <td><a href="#readlineiter-readlineiter-for-deno-and-getfileline">readlineiter</a></td>
@@ -89,7 +89,7 @@ Read text file (remote over HTTP(S) or local) line by line as async iterator, wi
     <td align="center"></td>
     <td align="center" title="Yes">✅</td>
     <td align="center"></td>
-    <td align="center">[![version number](https://img.shields.io/npm/v/readlineiter?color=green&label=version)](https://www.npmjs.com/package/readlineiter)</td>
+    <td align="center"><a href="https://www.npmjs.com/package/readlineiter" title="readlineiter's npm page"><img src="https://img.shields.io/npm/v/readlineiter?color=green&label=version" alt="version number"></a></td>
   </tr>
   <tr>
     <td><a href="#readlineiter-readlineiter-for-deno-and-getfileline">readlineiter for Deno</a></td>
