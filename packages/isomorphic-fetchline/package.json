@@ -1,6 +1,6 @@
 {
   "name": "isomorphic-fetchline",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Read text file (remote over HTTP(S) or local) line by line as async iterator, with Node, browsers and Deno",
   "main": "dist/umd/index.js",
   "browsers": "dist/umd/index.js",

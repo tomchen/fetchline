@@ -1,6 +1,6 @@
 {
   "name": "getfileline",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Read text file (remote over HTTP(S) or local) line by line as async iterator, with Node, browsers and Deno",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
