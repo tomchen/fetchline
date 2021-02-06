@@ -1,8 +1,8 @@
-# Fetch line JavaScript packages: read remote or local file line by line as async iterator
+# Fetch Line JavaScript packages: read remote or local file line by line as async iterator
 
 Read text file (remote over HTTP(S) or local) line by line as async iterator, with Node, browsers and Deno.
 
-[This GitHub monorepo](https://github.com/tomchen/fetchline/) hosts 6 released npm packages and 1 Deno module. They all serve a similar, simple purpose: read text file line by line and return an asynchronous iterable iterator of strings. They all try to be efficient and fast, and are written in TypeScript. However, their environment / platforms and exact purpose, features and behavior differ.
+[This GitHub monorepo](https://github.com/tomchen/fetchline/) hosts 6 npm packages and 1 Deno module. They all serve a similar, simple purpose: read text file line by line and return an asynchronous iterable iterator of strings. They all try to be efficient and fast, and are written in TypeScript. However, their environment / platforms and exact purpose, features and behavior differ.
 
 [![Actions Status](https://github.com/tomchen/fetchline/workflows/Test/badge.svg)](https://github.com/tomchen/fetchline/actions) [![Node.js](https://img.shields.io/badge/node-%3E=12.0-brightgreen.svg)](https://nodejs.org/) [![Deno](https://img.shields.io/badge/deno-%3E=1.2.0-white.svg)](https://deno.land/) [![lerna](https://img.shields.io/badge/monorepo-lerna-cc00ff.svg)](https://lerna.js.org/) [![License](https://img.shields.io/github/license/tomchen/fetchline)](https://github.com/tomchen/fetchline/blob/main/LICENSE)
 
@@ -24,8 +24,8 @@ Read text file (remote over HTTP(S) or local) line by line as async iterator, wi
   <tr>
     <td align="center"><img src="https://raw.githubusercontent.com/tomchen/fetchline/main/images/node.svg" title="Node.js" alt="Node.js" width="50px" height="50px"></td>
     <td align="center"><img src="https://raw.githubusercontent.com/tomchen/fetchline/main/images/deno.svg" title="Deno" alt="Deno" width="50px" height="50px"></td>
-    <td align="center"><img src="https://raw.githubusercontent.com/tomchen/fetchline/main/images/chrome.svg" title="Google Chrome" alt="Google Chrome" width="25px" height="25px"><img src="https://raw.githubusercontent.com/tomchen/fetchline/main/images/firefox.svg" title="Firefox" alt="Firefox" width="25px" height="25px"><img src="https://raw.githubusercontent.com/tomchen/fetchline/main/images/safari.svg" title="Safari" alt="Safari" width="25px" height="25px"><br>
-    <img src="https://raw.githubusercontent.com/tomchen/fetchline/main/images/edge.svg" title="Microsoft Edge" alt="Microsoft Edge" width="25px" height="25px"><img src="https://raw.githubusercontent.com/tomchen/fetchline/main/images/opera.svg" title="Opera" alt="Opera" width="25px" height="25px"><img src="https://raw.githubusercontent.com/tomchen/fetchline/main/images/samsung_internet.svg" title="Samsung Internet" alt="Samsung Internet" width="25px" height="25px"></td>
+    <td align="center"><img src="https://raw.githubusercontent.com/tomchen/fetchline/main/images/chrome.svg" title="Google Chrome" alt="Google Chrome" width="25px" height="25px"><img src="https://raw.githubusercontent.com/tomchen/fetchline/main/images/firefox.svg" title="Firefox" alt="Firefox" width="25px" height="25px"><br><img src="https://raw.githubusercontent.com/tomchen/fetchline/main/images/safari.svg" title="Safari" alt="Safari" width="25px" height="25px">
+    <img src="https://raw.githubusercontent.com/tomchen/fetchline/main/images/edge.svg" title="Microsoft Edge" alt="Microsoft Edge" width="25px" height="25px"><br><img src="https://raw.githubusercontent.com/tomchen/fetchline/main/images/opera.svg" title="Opera" alt="Opera" width="25px" height="25px"><img src="https://raw.githubusercontent.com/tomchen/fetchline/main/images/samsung_internet.svg" title="Samsung Internet" alt="Samsung Internet" width="25px" height="25px"></td>
     <td align="center"><img src="https://raw.githubusercontent.com/tomchen/fetchline/main/images/node.svg" title="Node.js" alt="Node.js" width="50px" height="50px"></td>
     <td align="center"><img src="https://raw.githubusercontent.com/tomchen/fetchline/main/images/deno.svg" title="Deno" alt="Deno" width="50px" height="50px"></td>
   </tr>
@@ -144,6 +144,8 @@ const lineIterator =
 
 Change `'fetchline'` to `nodefetchline`, `isomorphic-fetchline`, or `naivefetchline` if you use these packages instead.
 
+For Deno: `import fetchline from 'https://github.com/tomchen/fetchline/blob/main/packages/fetchline/src/index.ts'`
+
 Change the `import` line to syntax like `const nodefetchline = require('nodefetchline')` if you use nodefetchline or isomorphic-fetchline package in Node's CommonJS.
 
 For browsers:
@@ -159,12 +161,12 @@ fetchline(...) // same as above
 
 These four packages have exactly the same interface (parameters and return value):
 
-| Parameter Name                 | Required? | Type                 | Default Value | Description                                  |
-| :----------------------------- | :-------- | :------------------- | :------------ | :------------------------------------------- |
-| `filepath`                     | Required  | *string*             | *N/A*         | URL or path of the text file                 |
-| `options`                      | Optional  | *object*             | `{}`          | options, including the following three       |
-| `options.includeLastEmptyLine` | Optional  | *boolean*            | `true`        | Should it count the last empty line?         |
-| `options.encoding`             | Optional  | *string*             | `'utf-8'`     | File encoding                                |
+| Parameter Name                 | Required? | Type                 | Default Value | Description                                                                                                                                                                                            |
+| :----------------------------- | :-------- | :------------------- | :------------ | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `filepath`                     | Required  | *string*             | *N/A*         | URL or path of the text file                                                                                                                                                                           |
+| `options`                      | Optional  | *object*             | `{}`          | options, including the following three                                                                                                                                                                 |
+| `options.includeLastEmptyLine` | Optional  | *boolean*            | `true`        | Should it count the last empty line?                                                                                                                                                                   |
+| `options.encoding`             | Optional  | *string*             | `'utf-8'`     | File encoding                                                                                                                                                                                          |
 | `options.delimiter`            | Optional  | *string* or *RegExp* | `/\r?\n/g`    | Line (or other item)'s delimiter / separator.<br>**NOTE:** do not set it as something like `/\r\n\|\n\|\r/g`, it causes trouble when one of the chunks of a CRLF (`\r\n`)-EOL file ends with CR (`\r`) |
 
 **Return value:** { *AsyncIterableIterator\<string\>* } An asynchronous iterable iterator containing each line in string from the text file
@@ -179,9 +181,7 @@ npm install readlineiter
 
 ```js
 import readlineiter from 'readlineiter' // For Deno: import readlineiter from 'https://raw.githubusercontent.com/tomchen/fetchline/main/packages/readlineiter-deno/mod.ts'
-const lineIterator = readlineiter(
-  'https://raw.githubusercontent.com/tomchen/fetchline/main/testfile/crlf_finalnewline'
-)
+const lineIterator = readlineiter('./crlf_finalnewline')
 ;(async () => {
   for await (const line of lineIterator) {
     // do something with `line`
@@ -265,14 +265,14 @@ Or this:
 
 ### Line-delimited JSON
 
-These packages, especially 'fetchline' (the first one) for browsers, could be helpful for [line-delimited JSON](https://en.wikipedia.org/wiki/JSON_streaming#Line-delimited_JSON) parsing. You could write something like:
+These packages, especially 'fetchline' (the first one) for browsers, could be helpful for [line-delimited JSON](https://en.wikipedia.org/wiki/JSON_streaming#Line-delimited_JSON) (aka. [ndjson](http://ndjson.org/) (Newline Delimited JSON), [JSON Lines](https://jsonlines.org/)) parsing. You could write something like:
 
 ```js
 import fetchline from 'fetchline'
 const lineIterator = fetchline(lineDelimitedJsonUrl)
 ;(async () => {
   for await (const line of lineIterator) {
-    const lineJson = lineJSON.parse(line)
+    const lineJson = JSON.parse(line)
     // do something with `lineJson`
   }
 })()
