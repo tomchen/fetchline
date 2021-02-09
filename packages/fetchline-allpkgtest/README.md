@@ -193,7 +193,7 @@ const lineIterator = readlineiter(
 
 ### Characteristics
 
-|                       | ASAP  | 0 dependency | TypeScript |
+|                       | ASAP  | 0 dependencies | TypeScript |
 | --------------------- | :---: | :----------: | :--------: |
 | fetchline             |   ✅   |      ✅       |     ✅      |
 | nodefetchline         |   ✅   |      ✅       |     ✅      |
@@ -209,7 +209,7 @@ const lineIterator = readlineiter(
   * Except for naivefetchline that is, well, naïve, I really can't blame it
 * The local file reading libs read the file with pointer, rather than get a whole string in memory then split the string
 
-**0 dependency:** no external non-dev dependency for npm packages. Note that:
+**0 dependencies:** no external non-dev dependency for npm packages. Note that:
 
 * Node libraries inevitably use native Node libraries `http` and `https`, or `fs`
 * getfileline and readlineiter also use `readline` native lib directly thus are just wrappers, but other packages here use own low-level method

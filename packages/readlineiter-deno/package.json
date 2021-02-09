@@ -13,8 +13,5 @@
   },
   "bugs": {
     "url": "https://github.com/tomchen/fetchline/issues"
-  },
-  "engines": {
-    "deno": ">= 1.2.0"
   }
 }

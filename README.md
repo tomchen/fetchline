@@ -4,7 +4,7 @@ Read text file (remote over HTTP(S) or local) line by line as async iterator, wi
 
 [This GitHub monorepo](https://github.com/tomchen/fetchline/) hosts 6 npm packages and 1 Deno module. They all serve a similar, simple purpose: read text file line by line and return an asynchronous iterable iterator of strings. They all try to be efficient and fast, and are written in TypeScript. However, their environment / platforms and exact purpose, features and behavior differ.
 
-[![Actions Status](https://github.com/tomchen/fetchline/workflows/Test/badge.svg)](https://github.com/tomchen/fetchline/actions) [![Node.js](https://img.shields.io/badge/node-%3E=12.0-brightgreen.svg)](https://nodejs.org/) [![Deno](https://img.shields.io/badge/deno-%3E=1.2.0-white.svg)](https://deno.land/) [![lerna](https://img.shields.io/badge/monorepo-lerna-cc00ff.svg)](https://lerna.js.org/) [![License](https://img.shields.io/github/license/tomchen/fetchline)](https://github.com/tomchen/fetchline/blob/main/LICENSE)
+[![Actions Status](https://github.com/tomchen/fetchline/workflows/Test/badge.svg)](https://github.com/tomchen/fetchline/actions) [![Node.js](https://img.shields.io/badge/node-%3E=12.0-brightgreen.svg?logo=node.js)](https://nodejs.org/) [![Deno](https://img.shields.io/badge/deno-%3E=1.2.0-white.svg?logo=deno)](https://deno.land/) [![lerna](https://img.shields.io/badge/monorepo-lerna-cc00ff.svg)](https://lerna.js.org/) [![License](https://img.shields.io/github/license/tomchen/fetchline)](https://github.com/tomchen/fetchline/blob/main/LICENSE)
 
 **TLDR: read the ["Purpose & environment" table](#purpose--environment), pick the package you need, have a look at the [Usage section](#usage), know at least a little bit about JavaScript's [async / await](#async--await), and go ahead to use them.**
 
@@ -192,7 +192,7 @@ const lineIterator = readlineiter('./crlf_finalnewline')
 
 ### Characteristics
 
-|                       | ASAP  | 0 dependency | TypeScript |
+|                       | ASAP  | 0 dependencies | TypeScript |
 | --------------------- | :---: | :----------: | :--------: |
 | fetchline             |   ✅   |      ✅       |     ✅      |
 | nodefetchline         |   ✅   |      ✅       |     ✅      |
@@ -208,7 +208,7 @@ const lineIterator = readlineiter('./crlf_finalnewline')
   * Except for naivefetchline that is, well, naïve, I really can't blame it
 * The local file reading libs read the file with pointer, rather than get a whole string in memory then split the string
 
-**0 dependency:** no external non-dev dependency for npm packages. Note that:
+**0 dependencies:** no external non-dev dependency for npm packages. Note that:
 
 * Node libraries inevitably use native Node libraries `http` and `https`, or `fs`
 * getfileline and readlineiter also use `readline` native lib directly thus are just wrappers, but other packages here use own low-level method

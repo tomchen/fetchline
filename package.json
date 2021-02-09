@@ -2,6 +2,7 @@
   "name": "fetchline-monorepo",
   "private": true,
   "scripts": {
+    "postinstall": "husky install",
     "bootstrap": "lerna bootstrap",
     "build": "lerna run build",
     "test:node": "lerna run test:node",
@@ -19,6 +20,9 @@
     "copyreadme": "copyfiles README.md packages/fetchline && copyfiles README.md packages/nodefetchline && copyfiles README.md packages/isomorphic-fetchline && copyfiles README.md packages/naivefetchline && copyfiles README.md packages/getfileline && copyfiles README.md packages/readlineiter"
   },
   "devDependencies": {
+    "@commitlint/cli": "^11.0.0",
+    "@commitlint/config-conventional": "^11.0.0",
+    "@commitlint/config-lerna-scopes": "^11.0.0",
     "@typescript-eslint/eslint-plugin": "^4.14.2",
     "@typescript-eslint/parser": "^4.14.2",
     "ava": "^3.0.2",
@@ -26,6 +30,7 @@
     "eslint": "^7.19.0",
     "eslint-config-prettier": "^7.2.0",
     "eslint-plugin-prettier": "^3.3.1",
+    "husky": "^5.0.9",
     "lerna": "^3.22.1",
     "prettier": "^2.2.1",
     "rimraf": "^3.0.2",
